@@ -13,6 +13,7 @@ import (
 
 var logger *zap.Logger
 
+// InitLogger ...
 func InitLogger() {
 	logger, _ = zap.NewDevelopment()
 }
@@ -22,17 +23,17 @@ func main() {
 	defer logger.Sync()
 	startTime := time.Now()
 
-	for index, _ := range config.SourceConfig {
+	for index := range config.SourceConfig {
 		PGListFile, err := walkfile.GetFileList(config.SourceConfig[index].ScanItemName, config.SourceConfig[index].FileScanDir)
 		if err != nil {
-			logger.Error("pg filepath.Walk() failed, returned ", zap.Error(err))
+			logger.Error("filepath.Walk() failed, returned ", zap.Error(err))
 			return
 		}
 		for _, filePath := range PGListFile {
 			// 进行parse
 			parseStruct, err := parser.ParseStruct(filePath)
 			if err != nil {
-				logger.Error("Error while parsing pg router.go:", zap.Error(err))
+				logger.Error("Error while parsing struct: ", zap.Error(err))
 				return
 			}
 			// 记录到Markdown中
@@ -40,6 +41,6 @@ func main() {
 		}
 		PGListFile = nil
 	}
-	logger.Info("all exec success")
+	logger.Info("All exec success")
 	logger.Info(fmt.Sprintf("Total time is %f", time.Since(startTime).Seconds()))
 }
