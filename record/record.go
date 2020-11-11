@@ -3,7 +3,6 @@ package record
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"gitlab.xinghuolive.com/Backend-Go/StructParser/parser"
 	"go.uber.org/zap"
@@ -21,10 +20,6 @@ func Record2MarkdownFile(path string, schema *parser.Schema) {
 		return
 	}
 	outputFileName := path + schema.TableName + ".md"
-	pgName := strings.Split(schema.TableName, ".")[0]
-	if pgName == "multi" || pgName == "public" || pgName == "common" {
-		outputFileName = path + strings.Split(schema.TableName, ".")[0] + "\\" + schema.TableName + ".md"
-	}
 
 	mdFile, err := os.OpenFile(outputFileName, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.ModePerm)
 	if err != nil {
