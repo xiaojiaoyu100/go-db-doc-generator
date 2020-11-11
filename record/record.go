@@ -15,6 +15,11 @@ func Record2MarkdownFile(path string, schema *parser.Schema) {
 	if schema.TableName == "" {
 		return
 	}
+	err := createFile(path)
+	if err != nil {
+		logger.Error("create file failed ", zap.Error(err))
+		return
+	}
 	outputFileName := path + schema.TableName + ".md"
 	pgName := strings.Split(schema.TableName, ".")[0]
 	if pgName == "multi" || pgName == "public" || pgName == "common" {
@@ -66,4 +71,25 @@ func ModelPlus(modelType string) string {
 		break
 	}
 	return addPlus
+}
+
+func createFile(filePath string) error {
+	if !isExist(filePath) {
+		err := os.MkdirAll(filePath, os.ModePerm)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func isExist(path string) bool {
+	_, err := os.Stat(path)
+	if err != nil {
+		if os.IsExist(err) {
+			return true
+		}
+		return false
+	}
+	return true
 }
