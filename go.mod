@@ -1,4 +1,4 @@
-module gitlab.xinghuolive.com/Backend-Go/StructParser
+module github.com/Howie59/go-db-doc-generator
 
 go 1.14
 
