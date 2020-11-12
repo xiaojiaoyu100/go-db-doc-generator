@@ -1,4 +1,4 @@
-module github.com/xiaojiaoyu100/go-db-doc-generator
+module github.com/Howie59/go-db-doc-generator
 
 go 1.14
 
