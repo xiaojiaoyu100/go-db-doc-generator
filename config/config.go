@@ -11,7 +11,7 @@ type (
 	Config           struct {
 		FileScanDir  string `json:"file_scan_dir"`  // 文件夹扫描路径
 		ScanItemName string `json:"scan_item_name"` // 需要扫描的文件名
-		DestDir      string `json:"dest_dir"`       // 最终保存的文件路径
+		DestDir      string `json:"dest_dir"`       // 最终保存的文件路径（相对路径）
 	}
 )
 
