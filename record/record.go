@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Howie59/go-db-doc-generator/parser"
+	"github.com/xiaojiaoyu100/go-db-doc-generator/parser"
 	"go.uber.org/zap"
 )
 

@@ -6,11 +6,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/Howie59/go-db-doc-generator/config"
-	"github.com/Howie59/go-db-doc-generator/parser"
-	"github.com/Howie59/go-db-doc-generator/record"
-	"github.com/Howie59/go-db-doc-generator/walkfile"
 	"github.com/spf13/cobra"
+	"github.com/xiaojiaoyu100/go-db-doc-generator/config"
+	"github.com/xiaojiaoyu100/go-db-doc-generator/parser"
+	"github.com/xiaojiaoyu100/go-db-doc-generator/record"
+	"github.com/xiaojiaoyu100/go-db-doc-generator/walkfile"
 	"go.uber.org/zap"
 )
 
