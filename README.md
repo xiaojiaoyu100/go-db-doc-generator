@@ -5,4 +5,4 @@
 
 ### 二、使用方法
 1. 建议大体通读下代码看下是否有不符合要求的地方
-2. 执行cmd下的main.go或通过bash运行
+2. `docgen set --config xxxx`方式执行
