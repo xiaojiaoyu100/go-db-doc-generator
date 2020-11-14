@@ -79,5 +79,5 @@ func main() {
 		PGListFile = nil
 	}
 	logger.Info("All exec success")
-	logger.Info(fmt.Sprintf("Total time is %f", time.Since(startTime).Seconds()))
+	logger.Info(fmt.Sprintf("Total time is %f s", time.Since(startTime).Seconds()))
 }

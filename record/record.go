@@ -24,9 +24,8 @@ func Record2MarkdownFile(path string, schema *parser.Schema) {
 	pgName := strings.Split(schema.TableName, ".")[0]
 	if pgName == "multi" || pgName == "public" || pgName == "common" {
 		err := createFile(path + pgName + "/")
-		fmt.Println(path + pgName + "/")
 		if err != nil {
-			logger.Error("create file failed ", zap.Error(err))
+			logger.Error("create file "+path + pgName + "/" + "failed", zap.Error(err))
 			return
 		}
 		outputFileName = path + strings.Split(schema.TableName, ".")[0] + "/" + schema.TableName + ".md"
