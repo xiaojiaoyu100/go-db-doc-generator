@@ -23,6 +23,12 @@ func Record2MarkdownFile(path string, schema *parser.Schema) {
 	outputFileName := path + schema.TableName + ".md"
 	pgName := strings.Split(schema.TableName, ".")[0]
 	if pgName == "multi" || pgName == "public" || pgName == "common" {
+		err := createFile(path + pgName + "/")
+		fmt.Println(path + pgName + "/")
+		if err != nil {
+			logger.Error("create file failed ", zap.Error(err))
+			return
+		}
 		outputFileName = path + strings.Split(schema.TableName, ".")[0] + "/" + schema.TableName + ".md"
 	}
 	mdFile, err := os.OpenFile(outputFileName, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.ModePerm)
